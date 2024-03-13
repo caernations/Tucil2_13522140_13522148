@@ -9,18 +9,18 @@ screen = pygame.display.set_mode((window_width, window_height))
 screen_width, screen_height = screen.get_size()
 
 # Calculate positions relative to screen size
-margin = 100  # Margin from the edge of the screen
-vertical_center = screen_height // 2
-horizontal_center = screen_width // 2
-scale_factor = 0.75  # Scale down by 25%
-scaled_margin = margin * scale_factor
-scaled_horizontal_center = horizontal_center * scale_factor
-scaled_vertical_center = vertical_center * scale_factor
+margin = 120  # Margin from the edge of the screen
+window_height = screen_height // 2
+window_width = screen_width // 2
+# scale_factor = 0.75  # Scale down by 25%
+# scaled_margin = margin * scale_factor
+# scaled_horizontal_center = window_width * scale_factor
+# scaled_vertical_center = window_height * scale_factor
 
 clock = pygame.time.Clock()
 fps = 60
 
-font = pygame.font.Font('freesansbold.ttf', 32)
+font = pygame.font.Font('freesansbold.ttf', 22)
 
 # Colors
 white = (235, 235, 235)
@@ -33,13 +33,13 @@ t = 0
 speed = 0.002
 quadratic_positions_bruteforce = [
     Screen(margin, screen_height - margin, "P0"),
-    Screen(horizontal_center // 2, vertical_center, "P1"),
+    Screen(window_width // 2, window_height, "P1"),
     Screen(margin, margin, "P2")
 ]
 quadratic_positions_divide_conquer = [
-    Screen(horizontal_center + margin, screen_height - margin, "P0"),
-    Screen(horizontal_center + (horizontal_center // 2), vertical_center, "P1"),
-    Screen(horizontal_center + margin, margin, "P2")
+    Screen(window_width + margin, screen_height - margin, "P0"),
+    Screen(window_width + (window_width // 2), window_height, "P1"),
+    Screen(window_width + margin, margin, "P2")
 ]
 
 quadratic_curve_bruteforce = []
@@ -63,8 +63,8 @@ while run:
     # GUI Text
     text_bruteforce = font.render("BruteForce T = " + str(t)[:5], True, black)
     text_divide_conquer = font.render("DivideConquer T = " + str(t)[:5], True, black)
-    bruteforce_text_x = (horizontal_center // 2) - (text_bruteforce.get_width() // 2)
-    divideconquer_text_x = horizontal_center + (horizontal_center // 2) - (text_divide_conquer.get_width() // 2)
+    bruteforce_text_x = (window_width // 2) - (text_bruteforce.get_width() // 2)
+    divideconquer_text_x = window_width + (window_width // 2) - (text_divide_conquer.get_width() // 2)
     top_margin = 40
     text_y_position = top_margin
 
