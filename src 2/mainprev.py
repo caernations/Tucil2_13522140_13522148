@@ -1,7 +1,7 @@
 import pygame
 from screen import Screen
 from curves import *
-from divide_and_conquer import quadraticBezierDivideAndConquer, generate_control_points
+
 
 pygame.init()
 # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
@@ -34,13 +34,12 @@ t = 0
 speed = 0.002
 
 
-### DARI SINI YG AKU MODIF
+## dibawah ini kode awal sebelum di modif
 
-# Get user input for the coordinates and iterations
+# Get user input for the coordinates
 P0 = list(map(int, input("Masukkan koordinat titik awal (pisahkan dengan spasi): ").split()))
 P1 = list(map(int, input("Masukkan koordinat titik kontrol (pisahkan dengan spasi): ").split()))
 P2 = list(map(int, input("Masukkan koordinat titik akhir (pisahkan dengan spasi): ").split()))
-iterations = int(input("Masukkan jumlah iterasi: "))
 
 # Use user input for the coordinates
 quadratic_positions_bruteforce = [
@@ -53,35 +52,26 @@ quadratic_positions_divide_conquer = [
     Screen(P1[0], P1[1], "P1"),
     Screen(P2[0], P2[1], "P2")
 ]
-
 quadratic_curve_bruteforce = []
 quadratic_curve_divide_and_conquer = []
 
-# Draw the quadratic curves
-quadraticCurveBruteForce(quadratic_positions_bruteforce, t, screen, red, quadratic_curve_bruteforce, green)
-quadratic_curve_divide_and_conquer = quadraticBezierDivideAndConquer(P0, P1, P2, iterations)
+# # Draw the quadratic curves
+# quadraticCurveBruteForce(quadratic_positions_bruteforce, t, screen, red, quadratic_curve_bruteforce, green)
+# quadraticCurveDivideAndConquer(quadratic_positions_divide_conquer, t, screen, red, quadratic_curve_divide_and_conquer, green)
 
-# Draw the lines connecting the points if enough points exist
-if len(quadratic_curve_bruteforce) > 2:
-    pygame.draw.lines(screen, red, False, quadratic_curve_bruteforce, 5)
-if len(quadratic_curve_divide_and_conquer) > 2:
-    pygame.draw.lines(screen, red, False, quadratic_curve_divide_and_conquer, 5)
+# # Draw the lines connecting the points if enough points exist
+# if len(quadratic_curve_bruteforce) > 2:
+#     pygame.draw.lines(screen, red, False, [(x, y + screen_height // 2) for x, y in quadratic_curve_bruteforce], 5)
+# if len(quadratic_curve_divide_and_conquer) > 2:
+#     pygame.draw.lines(screen, red, False, quadratic_curve_divide_and_conquer, 5)
 
-# Draw the control points for both curves
-for point in quadratic_positions_bruteforce:
-    point.display(screen, black)
-
-control_points_divide_conquer = generate_control_points(P0, P1, P2, iterations)
-for point in control_points_divide_conquer:
-    Screen(point[0], point[1], "").display(screen, green)
-
-
-### SAMPE SINI YG AKU MODIF
+# # Draw the control points for both curves
+# for point in quadratic_positions_bruteforce + quadratic_positions_divide_conquer:
+#     point.display(screen, black)
     
     
     
-    
-run = True
+# run = True
 while run:
     screen.fill(white)
     clock.tick(fps)
