@@ -37,21 +37,21 @@ speed = 0.002
 ### DARI SINI YG AKU MODIF
 
 # Get user input for the coordinates and iterations
-P0 = list(map(int, input("Masukkan koordinat titik awal (pisahkan dengan spasi): ").split()))
-P1 = list(map(int, input("Masukkan koordinat titik kontrol (pisahkan dengan spasi): ").split()))
-P2 = list(map(int, input("Masukkan koordinat titik akhir (pisahkan dengan spasi): ").split()))
+P0 = list(map(float, input("Masukkan koordinat titik awal (pisahkan dengan spasi): ").split()))
+P1 = list(map(float, input("Masukkan koordinat titik kontrol (pisahkan dengan spasi): ").split()))
+P2 = list(map(float, input("Masukkan koordinat titik akhir (pisahkan dengan spasi): ").split()))
 iterations = int(input("Masukkan jumlah iterasi: "))
 
 # Use user input for the coordinates
 quadratic_positions_bruteforce = [
-    Screen(P0[0], P0[1] + screen_height // 2, "P0"),
-    Screen(P1[0], P1[1] + screen_height // 2, "P1"),
-    Screen(P2[0], P2[1] + screen_height // 2, "P2")
+    Screen(P0[0], (P0[1]*-1) + screen_height // 2, f"P0 ({P0[0]}, {P0[1]})"),
+    Screen(P1[0], (P1[1]*-1) + screen_height // 2, f"P1 ({P1[0]}, {P1[1]})"),
+    Screen(P2[0], (P2[1]*-1) + screen_height // 2, f"P2 ({P2[0]}, {P2[1]})")
 ]
 quadratic_positions_divide_conquer = [
-    Screen(P0[0], P0[1], "P0"),
-    Screen(P1[0], P1[1], "P1"),
-    Screen(P2[0], P2[1], "P2")
+    Screen(P0[0], (P0[1]*-1), "P0"),
+    Screen(P1[0], (P1[1]*-1), "P1"),
+    Screen(P2[0], (P0[1]*-1), "P2")
 ]
 
 quadratic_curve_bruteforce = []
@@ -74,17 +74,36 @@ for point in quadratic_positions_bruteforce:
 control_points_divide_conquer = generate_control_points(P0, P1, P2, iterations)
 for point in control_points_divide_conquer:
     Screen(point[0], point[1], "").display(screen, green)
+    
+# Draw the coordinate text for both curves
+for point in quadratic_positions_bruteforce:
+    coord_text = font.render(f"{point.text}: ({point.x}, {point.y})", True, black)
+    screen.blit(coord_text, (point.x - 40, point.y + 20))
+
+for point in quadratic_positions_divide_conquer:
+    coord_text = font.render(f"{point.text}: ({point.x}, {point.y})", True, green)
+    screen.blit(coord_text, (point.x - 40, point.y + 20))
+
 
 
 ### SAMPE SINI YG AKU MODIF
-    
-    
-    
     
 run = True
 while run:
     screen.fill(white)
     clock.tick(fps)
+    
+    # Define the size of each cell
+    cell_size = 50
+
+    # Draw horizontal lines (rows)
+    for i in range(0, screen_height, cell_size):
+        pygame.draw.line(screen, black, (0, i), (screen_width, i), 1)
+
+    # Draw vertical lines (columns)
+    for i in range(0, screen_width, cell_size):
+        pygame.draw.line(screen, black, (i, 0), (i, screen_height), 1)
+    
     frameRate = int(clock.get_fps())
     pygame.display.set_caption("Quadratic Bezier Curves Comparison - FPS : {}".format(frameRate))
 
@@ -123,7 +142,7 @@ while run:
         t = 0
         quadratic_curve_bruteforce.clear()
         quadratic_curve_divide_and_conquer.clear()
-
+        
     # Draw the control points for both curves
     for point in quadratic_positions_bruteforce + quadratic_positions_divide_conquer:
         point.display(screen, black)

@@ -25,4 +25,4 @@ def generate_control_points(P0, P1, P2, iterations):
     return [P0, T0, S2, T1, P2]
 
 
-### ini baru yg divide and conquer blm yg bruteforce
+### 
