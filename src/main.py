@@ -3,7 +3,9 @@ from screen import Screen
 from curves import *
 
 pygame.init()
-screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+# screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
+window_width, window_height = 800, 600 
+screen = pygame.display.set_mode((window_width, window_height))
 screen_width, screen_height = screen.get_size()
 
 # Calculate positions relative to screen size
