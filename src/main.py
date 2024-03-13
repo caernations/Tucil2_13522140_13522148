@@ -4,18 +4,18 @@ from curves import *
 
 pygame.init()
 # screen = pygame.display.set_mode((0, 0), pygame.FULLSCREEN)
-window_width, window_height = 800, 600 
+window_width, window_height = 1000, 900
 screen = pygame.display.set_mode((window_width, window_height))
 screen_width, screen_height = screen.get_size()
 
 # Calculate positions relative to screen size
-margin = 120  # Margin from the edge of the screen
-window_height = screen_height // 2
-window_width = screen_width // 2
-# scale_factor = 0.75  # Scale down by 25%
-# scaled_margin = margin * scale_factor
-# scaled_horizontal_center = window_width * scale_factor
-# scaled_vertical_center = window_height * scale_factor
+margin = 100  # Margin from the edge of the screen
+vertical_center = screen_height // 2
+horizontal_center = screen_width // 2
+scale_factor = 0.75  # Scale down by 25%
+scaled_margin = margin * scale_factor
+scaled_horizontal_center = horizontal_center * scale_factor
+scaled_vertical_center = vertical_center * scale_factor
 
 clock = pygame.time.Clock()
 fps = 60
