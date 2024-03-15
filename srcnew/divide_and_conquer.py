@@ -30,6 +30,8 @@ class BezierCurve:
     def mid_point(self, control_point1, control_point2):
         # plot a line between mid_point1 and mid_point2
         plt.plot([control_point1[0], control_point2[0]], [control_point1[1], control_point2[1]], 'go--')
+        plt.draw()
+        plt.pause(0.45)
         return ((control_point1[0] + control_point2[0]) / 2, (control_point1[1] + control_point2[1]) / 2)
     
 
@@ -44,7 +46,9 @@ class BezierCurve:
         x = [point[0] for point in self.bezier_points]
         y = [point[1] for point in self.bezier_points]
         plt.plot(x, y, 'bo-', label='Bezier Curve')  # 'bo-' denotes blue color, circle markers, and solid lines
-        
+        plt.draw()
+        plt.pause(0.70)  
+             
         # Set the title and labels
         plt.title('Bezier Curve Divide and Conquer')
         plt.xlabel('X')
