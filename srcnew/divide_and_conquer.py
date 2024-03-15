@@ -41,7 +41,8 @@ class BezierCurve:
         
         # Plot the control points
         plt.plot(ctrl_x, ctrl_y, 'ro--', label='Control Points')  # 'ko--' denotes black color, circle markers, and dashed lines
-        
+        plt.draw()
+        plt.pause(0.70)  
         # Plot the Bezier curve
         x = [point[0] for point in self.bezier_points]
         y = [point[1] for point in self.bezier_points]
