@@ -19,7 +19,6 @@ class BezierCurve:
             mid_point2 = self.mid_point(ctrl2, ctrl3)
             mid_point3 = self.mid_point(mid_point1, mid_point2)
             
-            
             # the next control point
             current_iteration += 1
             self.populate_bezier_points(ctrl1, mid_point1, mid_point3, current_iteration, iterations)  # left branch
@@ -28,10 +27,10 @@ class BezierCurve:
 
 
     def mid_point(self, control_point1, control_point2):
-        # plot a line between mid_point1 and mid_point2
-        plt.plot([control_point1[0], control_point2[0]], [control_point1[1], control_point2[1]], 'go--')
+        # plot a line between control_point1 and control_point2
+        plt.plot([control_point1[0], control_point2[0]], [control_point1[1], control_point2[1]], 'go--', label='Midpoints' if not plt.gca().get_legend_handles_labels()[1] else '')
         plt.draw()
-        plt.pause(0.45)
+        plt.pause(0.04)
         return ((control_point1[0] + control_point2[0]) / 2, (control_point1[1] + control_point2[1]) / 2)
     
 
@@ -42,13 +41,13 @@ class BezierCurve:
         # Plot the control points
         plt.plot(ctrl_x, ctrl_y, 'ro--', label='Control Points')  # 'ko--' denotes black color, circle markers, and dashed lines
         plt.draw()
-        plt.pause(0.70)  
+        plt.pause(0.04)  
         # Plot the Bezier curve
         x = [point[0] for point in self.bezier_points]
         y = [point[1] for point in self.bezier_points]
         plt.plot(x, y, 'bo-', label='Bezier Curve')  # 'bo-' denotes blue color, circle markers, and solid lines
         plt.draw()
-        plt.pause(0.10)  
+        plt.pause(0.04)  
              
         # Set the title and labels
         plt.title('Bezier Curve Divide and Conquer')
@@ -61,7 +60,6 @@ class BezierCurve:
         # Display the plot
         plt.show()
 
-# Example usage:
 if __name__ == "__main__":
     bezier = BezierCurve()
     ctrl1 = tuple(map(int, input("Enter first control point as two space separated integers: ").split()))
