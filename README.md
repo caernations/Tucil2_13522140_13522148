@@ -15,8 +15,8 @@ This repository is an archive of files for Tugas Kecil 2 IF2211 Strategi Algorit
 This program is a simple implementation in Python that constructs a quadratic Bézier curve using two algorithmic approaches: the divide and conquer midpoint algorithm and the brute force algorithm. The divide and conquer algorithm works by dividing the curve into line segments and breaking it down into smaller subproblems until the curve is considered smooth enough. On the other hand, the brute force algorithm directly computes the points on the Bézier curve without breaking it down into subproblems. This program prompts user input of N control points that determine the shape of the Bézier curve. Upon receiving input, the program constructs the Bézier curve using both implemented algorithms. Subsequently, the program displays the resulting Bézier curves from both algorithms to allow users to compare the outcomes of the two approaches. Thus, this program provides users with an opportunity to understand and compare the efficiency and accuracy of the two algorithms in constructing Bézier curves.
 
 ## Contributor
-13522140 Yasmin Farisah Salma
-13522148 Auralea Alvinia Syaikha
+- 13522140 Yasmin Farisah Salma
+- 13522148 Auralea Alvinia Syaikha
 
 ## Technologies Used
 - Python
