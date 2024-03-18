@@ -8,7 +8,7 @@ class BezierCurve:
 
     def create_bezier(self, ctrl1, ctrl2, ctrl3, iterations):
         self.bezier_points = [ctrl1]  # Add the first control point
-        t_values = np.linspace(0, 1, iterations + 3)  # Generate n+2 t values to include the endpoints
+        t_values = np.linspace(0, 1, (2 ** iterations) + 1)  # Generate n+2 t values to include the endpoints
         for t in t_values[1:-1]:  # Skip the first and last t values to avoid duplicating the control points
             # Apply the Bezier formula for a quadratic curve directly
             x = (1 - t) ** 2 * ctrl1[0] + 2 * (1 - t) * t * ctrl2[0] + t ** 2 * ctrl3[0]
