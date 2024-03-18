@@ -42,24 +42,3 @@ def plot_curve(control_points, curve_points):
     plt.ylabel('Y')
     plt.show()
 
-def main():
-    num_points = int(input("Enter the number of control points (at least 2): "))
-    control_points = []
-    print("Enter the control points (x, y):")
-    for i in range(num_points):
-        point = input(f"Point {i+1}: ")
-        x, y = map(float, point.split())
-        control_points.append([x, y])
-
-    iterations = int(input("Enter the number of iterations for curve refinement: "))
-
-    control_points_np = np.array(control_points)
-    
-    curve_points = []
-    bezier_divide_and_conquer(control_points_np, curve_points, iterations)
-    curve_points = np.array(curve_points)
-    
-    plot_curve(control_points_np, curve_points)
-
-if __name__ == "__main__":
-    main()

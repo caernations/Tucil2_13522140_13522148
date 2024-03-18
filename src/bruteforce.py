@@ -40,15 +40,3 @@ class BezierCurve:
         # Display the plot
         plt.show()
 
-# Example usage:
-if __name__ == "__main__":
-    bezier = BezierCurve()
-    ctrl1 = tuple(map(int, input("Enter first control point as two space separated integers: ").split()))
-    ctrl2 = tuple(map(int, input("Enter second control point as two space separated integers: ").split()))
-    ctrl3 = tuple(map(int, input("Enter third control point as two space separated integers: ").split()))
-    iterations = int(input("Enter number of iterations: "))
-    start_time = time.time()
-    bezier.create_bezier(ctrl1, ctrl2, ctrl3, iterations)
-    end_time = time.time()
-    bezier.plot_curve([ctrl1, ctrl2, ctrl3])
-    print(f"Execution time: {end_time - start_time} seconds")
