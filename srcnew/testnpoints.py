@@ -1,4 +1,7 @@
+import matplotlib.pyplot as plt
+
 def midpoint(p1, p2):
+    plt.plot([p1[0], p2[0]], [p1[1], p2[1]], 'r-')
     return ((p1[0] + p2[0]) / 2, (p1[1] + p2[1]) / 2)
 
 def bezier_curve(control_points, current_iteration, iterations):
@@ -38,6 +41,13 @@ def main():
 
     result = bezier_curve(control_points, current_iteration, iterations)
     print(result)
+
+    # Plotting the curve
+    x_values = [point[0] for point in result]
+    y_values = [point[1] for point in result]
+
+    plt.plot(x_values, y_values)
+    plt.show()
 
 if __name__ == "__main__":
     main()
