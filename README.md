@@ -1,4 +1,4 @@
-# Tucil1_13522148 - Cyberpunk 2077 Breach Protocol Solver
+# Tucil2_13522140_13522148 - Membangun Kurva Bézier dengan Algoritma Titik Tengah berbasis Divide and Conquer
 This repository is an archive of files for Tugas Kecil 2 IF2211 Strategi Algoritma.
 
 ## Table of Contents
@@ -12,10 +12,10 @@ This repository is an archive of files for Tugas Kecil 2 IF2211 Strategi Algorit
     - [Program Execution](#program-execution)
 
 ## General Information
-This program is a simple implementation in Python that constructs a quadratic Bézier curve using two algorithmic approaches: the divide and conquer midpoint algorithm and the brute force algorithm. The divide and conquer algorithm works by dividing the curve into line segments and breaking it down into smaller subproblems until the curve is considered smooth enough. On the other hand, the brute force algorithm directly computes the points on the Bézier curve without breaking it down into subproblems. This program prompts user input of N control points that determine the shape of the Bézier curve. Upon receiving input, the program constructs the Bézier curve using both implemented algorithms. Subsequently, the program displays the resulting Bézier curves from both algorithms to allow users to compare the outcomes of the two approaches. Thus, this program provides users with an opportunity to understand and compare the efficiency and accuracy of the two algorithms in constructing Bézier curves.
+Program ini adalah sebuah implementasi sederhana dalam bahasa Python yang membangun sebuah kurva Bézier kuadratik menggunakan dua pendekatan algoritma: algoritma titik tengah berbasis divide and conquer dan algoritma brute force. Algoritma divide and conquer bekerja dengan membagi kurva menjadi segmen-segmen garis dan memecahnya menjadi submasalah yang lebih kecil hingga kurva dianggap cukup halus. Di sisi lain, algoritma brute force secara langsung menghitung titik-titik pada kurva Bézier tanpa membaginya menjadi submasalah. Program ini meminta input dari pengguna berupa N titik kontrol yang menentukan bentuk kurva Bézier. Setelah menerima input, program akan membangun kurva Bézier menggunakan kedua algoritma yang diimplementasikan. Selanjutnya, program akan menampilkan kurva Bézier hasil dari kedua algoritma tersebut untuk memungkinkan pengguna membandingkan hasil dari kedua pendekatan. Dengan demikian, program ini memberikan kesempatan bagi pengguna untuk memahami dan membandingkan efisiensi serta akurasi kedua algoritma dalam pembentukan kurva Bézier.
 
 <p align = "center">
-  <img width = "300" src="https://i.stack.imgur.com/QOZ6J.png">
+  <img width = "250" src="https://i.stack.imgur.com/QOZ6J.png">
 </p>
 
 ## Contributor
