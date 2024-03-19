@@ -39,22 +39,42 @@ def get_menu_option():
             return user_input
         else:
             print()
-            print("OPTION NOT AVAILABLE! Please enter either 1 or 2.")
+            print("OPTION NOT AVAILABLE!\nPlease enter either 1 or 2.\n")
             system('pause')
             system('cls')
             
 user_input = get_menu_option()
 
 if user_input == '1':
-    num_points = int(input("Enter the number of control points (at least 2): "))
+    while True:
+        try:
+            num_points = int(input("Enter the number of control points ( >1 ): "))
+            if num_points < 2:
+                raise ValueError("Number of control points must be at least 2.")
+            break
+        except ValueError as e:
+            print(e)
+            
     control_points = []
-    print("Enter the control points (x y):")
+    print("Enter the control points (x, y):")
     for i in range(num_points):
-        point = input(f"Point {i + 1}: ")
-        x, y = map(float, point.split())
-        control_points.append([x, y])
-
-    iterations = int(input("Enter the number of iterations: "))
+        while True:
+            point = input(f"Control point {i + 1}: ")
+            try:
+                x, y = map(float, point.split(','))
+                control_points.append([x, y])
+                break
+            except ValueError:
+                print("Invalid input. Please enter two numbers separated by comma.")
+                
+    while True:
+        try:
+            iterations = int(input("Enter the number of iterations ( >=0 ): "))
+            if iterations < 0:
+                raise ValueError("Number of iterations must be >= 0.")
+            break
+        except ValueError as e:
+            print(e)
 
     control_points_np = np.array(control_points)
     
@@ -63,33 +83,48 @@ if user_input == '1':
     bezier_divide_and_conquer(control_points_np, curve_points, iterations)
     curve_points = np.array(curve_points)
     end_time = time.time()
-    print()
-    print()
-    print("----------------------------------------")
+    print("\n----------------------------------------")
     print("            EXECUTION TIME              ")
     print("----------------------------------------")
     print(f"Execution time: {end_time - start_time} seconds")
     plot_curve(control_points_np, curve_points)
-    print()
-    print()
 
 else:
     bezier = BezierCurve()
-    num_points = int(input("Enter the number of control points (at least 2): "))
+    while True:
+        try:
+            num_points = int(input("Enter the number of control points ( >1 ): "))
+            if num_points < 2:
+                raise ValueError("Number of control points must be at least 2.")
+            break
+        except ValueError as e:
+            print(e)
+            
     control_points = []
     print("Enter the control points (x, y):")
     for i in range(num_points):
-        point = input(f"Point {i + 1}: ")
-        x, y = map(float, point.split())
-        control_points.append([x, y])
+        while True:
+            point = input(f"Point {i + 1}: ")
+            try:
+                x, y = map(float, point.split(','))
+                control_points.append([x, y])
+                break
+            except ValueError:
+                print("Invalid input. Please enter two numbers separated by a comma.")
+                
+    while True:
+        try:
+            iterations = int(input("Enter the number of iterations ( >= 0): "))
+            if iterations < 0:
+                raise ValueError("Number of iterations must be >= 0.")
+            break
+        except ValueError as e:
+            print(e)
 
-    iterations = int(input("Enter the number of iterations: "))
     start_time = time.time()
     bezier.create_bezier(control_points, iterations)
     end_time = time.time()
-    print()
-    print()
-    print("----------------------------------------")
+    print("\n----------------------------------------")
     print("            EXECUTION TIME              ")
     print("----------------------------------------")
     print(f"Execution time: {end_time - start_time} seconds")
