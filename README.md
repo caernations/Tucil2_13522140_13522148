@@ -41,12 +41,30 @@ Program ini adalah sebuah implementasi sederhana dalam bahasa Python yang memban
 │   └── bruteforce.py
 │ 
 └── test
-    ├── test1.txt
-    ├── test2.txt
-    ├── test3.txt
-    ├── test4.txt
-    ├── test5.txt
-    └── test6.txt
+    ├── CLI_bf1.txt
+    ├── CLI_bf2.txt
+    ├── CLI_bf3.txt
+    ├── CLI_bf4.txt
+    ├── CLI_bf5.txt
+    ├── CLI_bf6.txt
+    ├── CLI_dnc1.txt
+    ├── CLI_dnc2.txt
+    ├── CLI_dnc3.txt
+    ├── CLI_dnc4.txt
+    ├── CLI_dnc5.txt
+    ├── CLI_dnc6.txt
+    ├── JPG_bf1.jpg
+    ├── JPG_bf2.jpg
+    ├── JPG_bf3.jpg
+    ├── JPG_bf4.jpg
+    ├── JPG_bf5.jpg
+    ├── JPG_bf6.jpg
+    ├── JPG_dnc1.jpg
+    ├── JPG_dnc2.jpg
+    ├── JPG_dnc3.jpg
+    ├── JPG_dnc4.jpg
+    ├── JPG_dnc5.jpg
+    └── JPG_dnc6.jpg
     
 ```
 

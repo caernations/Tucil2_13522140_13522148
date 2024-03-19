@@ -1,0 +1,12 @@
+Enter the number of control points ( >1 ): 4     
+Enter the control points (x, y):
+Control point 1: 10, 40
+Control point 2: 40, 70
+Control point 3: 70, 100
+Control point 4: 30, 0
+Enter the number of iterations ( >=0 ): 4
+
+----------------------------------------
+            EXECUTION TIME
+----------------------------------------
+Execution time: 0.347592830657959 seconds

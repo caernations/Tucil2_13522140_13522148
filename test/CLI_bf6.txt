@@ -1,0 +1,16 @@
+Enter the number of control points ( >1 ): 8
+Enter the control points (x, y):
+Point 1: 10, 20
+Point 2: 57, 32
+Point 3: 41, 5
+Point 4: 90, 100
+Point 5: 65, 73
+Point 6: 89, 78
+Point 7: 0, 10
+Point 8: -15, -10
+Enter the number of iterations ( >= 0): 10
+
+----------------------------------------
+            EXECUTION TIME
+----------------------------------------
+Execution time: 0.08192777633666992 seconds
