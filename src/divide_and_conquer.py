@@ -14,8 +14,10 @@ def subdivide(control_points, iterations):
         for i in range(len(control_points) - 1):
             plt.plot([control_points[i][0], control_points[i + 1][0]], [control_points[i][1], control_points[i + 1][1]], 'yo--')
             plt.draw()
-            if(iterations <= 5):    # kalau iterasi lebih dari 5 dan ditambahkan pause, program akan menggambarkan prosesnya satu per satu sehingga akan memakan waktu yang lama
-                plt.pause(0.00001)  # execution time untuk jumlah iterasi yang kurang dari 5 otomatis akan bertambah karena adanya pause berikut
+            if(iterations <= 5):    # kalau iterasi lebih dari 5 dan ditambahkan pause, program akan menggambarkan prosesnya satu per satu 
+                plt.pause(0.00001)  # sehingga akan memakan waktu yang lama
+                                    # execution time untuk jumlah iterasi yang <=5 otomatis akan bertambah karena adanya pause berikut
+                                    
             mid_point = (control_points[i] + control_points[i + 1]) / 2
             new_points.append(mid_point)
             if i == 0:
