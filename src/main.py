@@ -93,6 +93,6 @@ else:
     print("            EXECUTION TIME              ")
     print("----------------------------------------")
     print(f"Execution time: {end_time - start_time} seconds")
-    bezier.plot_curve(control_points)
+    bezier.animate_curve(control_points, iterations)
     print()
     print()
