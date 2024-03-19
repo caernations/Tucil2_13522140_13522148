@@ -25,9 +25,9 @@ class BezierCurve:
         n = len(control_points) - 1
         fig, ax = plt.subplots()
         ax.set_title('Bezier Curve Animation')
-        line, = ax.plot([], [], 'bo-', label='Bezier Curve')
+        line, = ax.plot([], [], 'mo-', label='Bezier Curve')
         ctrl_x, ctrl_y = zip(*control_points)
-        ax.plot(ctrl_x, ctrl_y, 'ro--', label='Control Points')
+        ax.plot(ctrl_x, ctrl_y, 'co--', label='Control Points')
         ax.legend()
 
         def init():
@@ -39,6 +39,6 @@ class BezierCurve:
             line.set_data(x, y)
             return line,
 
-        anim = FuncAnimation(fig, update, frames=range(1, iterations + 1), init_func=init, blit=True, repeat=False)
+        anim = FuncAnimation(fig, update, frames=range(1, iterations + 1), init_func=init, blit=True, repeat=False, interval=500)
         plt.show()
         return anim
