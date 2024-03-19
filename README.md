@@ -74,10 +74,11 @@ Program ini adalah sebuah implementasi sederhana dalam bahasa Python yang memban
 
 ### Installation
 - Download and install [Python](https://www.python.org/downloads/)
-- Download all folder and files on this repository or simply clone this repo!
+- Download all folder and files on this repository or simply clone [this repo](https://github.com/caernations/Tucil2_13522140_13522148)!
+
+> `git clone https://github.com/caernations/Tucil2_13522140_13522148`
 
 ### Program Execution
-    git clone https://github.com/caernations/Tucil2_13522140_13522148
     cd Tucil2_13522140_13522148
     cd src
     pip install matplotlib
