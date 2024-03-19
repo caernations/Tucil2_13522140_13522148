@@ -1,42 +1,44 @@
-import time
-import matplotlib.pyplot as plt
 import numpy as np
+from scipy.special import comb  # For binomial coefficients
+import matplotlib.pyplot as plt
+from matplotlib.animation import FuncAnimation
 
 class BezierCurve:
     def __init__(self):
         self.bezier_points = []
 
-    def create_bezier(self, ctrl1, ctrl2, ctrl3, iterations):
-        self.bezier_points = [ctrl1]  # Add the first control point
-        t_values = np.linspace(0, 1, (2 ** iterations) + 1)  # Generate n+2 t values to include the endpoints
-        for t in t_values[1:-1]:  # Skip the first and last t values to avoid duplicating the control points
-            # Apply the Bezier formula for a quadratic curve directly
-            x = (1 - t) ** 2 * ctrl1[0] + 2 * (1 - t) * t * ctrl2[0] + t ** 2 * ctrl3[0]
-            y = (1 - t) ** 2 * ctrl1[1] + 2 * (1 - t) * t * ctrl2[1] + t ** 2 * ctrl3[1]
-            self.bezier_points.append((x, y))
-        self.bezier_points.append(ctrl3)  # Add the last control point
+    def create_bezier(self, control_points, iterations):
+        n = len(control_points) - 1
+        t_values = np.linspace(0, 1, (2 ** iterations) + 1)
+        bezier_points = [self.calculate_bezier_point(t, control_points, n) for t in t_values]
+        return bezier_points
 
+    def calculate_bezier_point(self, t, control_points, n):
+        x, y = 0, 0
+        for i, (px, py) in enumerate(control_points):
+            bernstein_poly = comb(n, i) * (t ** i) * ((1 - t) ** (n - i))
+            x += px * bernstein_poly
+            y += py * bernstein_poly
+        return x, y
 
-    def plot_curve(self, ctrl_points):
-        # Control points for plotting
-        ctrl_x, ctrl_y = zip(*ctrl_points)
-        
-        # Plot the control points
-        plt.plot(ctrl_x, ctrl_y, 'ro--', label='Control Points')  # 'ro--' denotes red color, circle markers, and dashed lines
-        
-        # Plot the Bezier curve
-        x = [point[0] for point in self.bezier_points]
-        y = [point[1] for point in self.bezier_points]
-        plt.plot(x, y, 'bo-', label='Bezier Curve')  # 'bo-' denotes blue color, circle markers, and solid lines
-        
-        # Set the title and labels
-        plt.title('Bezier Curve Brute Force')
-        plt.xlabel('X')
-        plt.ylabel('Y')
-        
-        # Show the legend
-        plt.legend()
-        
-        # Display the plot
+    def animate_curve(self, control_points, iterations):
+        n = len(control_points) - 1
+        fig, ax = plt.subplots()
+        ax.set_title('Bezier Curve Animation')
+        line, = ax.plot([], [], 'bo-', label='Bezier Curve')
+        ctrl_x, ctrl_y = zip(*control_points)
+        ax.plot(ctrl_x, ctrl_y, 'ro--', label='Control Points')
+        ax.legend()
+
+        def init():
+            line.set_data([], [])
+            return line,
+
+        def update(frame):
+            x, y = zip(*self.create_bezier(control_points, frame))
+            line.set_data(x, y)
+            return line,
+
+        anim = FuncAnimation(fig, update, frames=range(1, iterations + 1), init_func=init, blit=True, repeat=False)
         plt.show()
-
+        return anim
