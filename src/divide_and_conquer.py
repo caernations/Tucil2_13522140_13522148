@@ -6,7 +6,7 @@ def is_flat_enough(control_points, iterations, current_iteration):
         return True
     return False
 
-def subdivide(control_points):
+def subdivide(control_points, iterations):
     left = [control_points[0]]
     right = [control_points[-1]]
     while len(control_points) > 1:
@@ -14,7 +14,8 @@ def subdivide(control_points):
         for i in range(len(control_points) - 1):
             plt.plot([control_points[i][0], control_points[i + 1][0]], [control_points[i][1], control_points[i + 1][1]], 'yo--')
             plt.draw()
-            plt.pause(0.00001)
+            if(iterations <= 5):    # kalau iterasi lebih dari 5 dan ditambahkan pause, program akan menggambarkan prosesnya satu per satu sehingga akan memakan waktu yang lama
+                plt.pause(0.00001)  # execution time untuk jumlah iterasi yang kurang dari 5 otomatis akan bertambah karena adanya pause berikut
             mid_point = (control_points[i] + control_points[i + 1]) / 2
             new_points.append(mid_point)
             if i == 0:
@@ -31,7 +32,7 @@ def bezier_divide_and_conquer(control_points, curve_points, iterations, current_
         curve_points.append(control_points[0]) 
         curve_points.append(control_points[-1])
     else:
-        left, right = subdivide(control_points)
+        left, right = subdivide(control_points, iterations)
         bezier_divide_and_conquer(left, curve_points, iterations, current_iteration + 1)
         bezier_divide_and_conquer(right, curve_points, iterations, current_iteration + 1)
 
