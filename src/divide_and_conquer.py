@@ -12,9 +12,9 @@ def subdivide(control_points):
     while len(control_points) > 1:
         new_points = []
         for i in range(len(control_points) - 1):
-            plt.plot([control_points[i][0], control_points[i + 1][0]], [control_points[i][1], control_points[i + 1][1]], 'g--')
+            plt.plot([control_points[i][0], control_points[i + 1][0]], [control_points[i][1], control_points[i + 1][1]], 'yo--')
             plt.draw()
-            plt.pause(0.2)
+            plt.pause(0.00001)
             mid_point = (control_points[i] + control_points[i + 1]) / 2
             new_points.append(mid_point)
             if i == 0:
@@ -37,10 +37,10 @@ def bezier_divide_and_conquer(control_points, curve_points, iterations, current_
 
 def plot_curve(control_points, curve_points):
     # plt.figure(figsize=(10,5))
-    plt.plot(control_points[:, 0], control_points[:, 1], 'ro-', label='Control Points')
+    plt.plot(control_points[:, 0], control_points[:, 1], 'co-', label='Control Points')
     plt.draw()
     plt.pause(0.05)
-    plt.plot(curve_points[:, 0], curve_points[:, 1], 'bo-', label='Bezier Curve')
+    plt.plot(curve_points[:, 0], curve_points[:, 1], 'mo-', label='Bezier Curve')
     plt.draw()
     plt.pause(0.05)
     plt.legend()
